@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>متجري</title>
+  <style>
+    body {
+      font-family: 'Cairo', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #f0f3f4, #ecf0f1);
+      color: #2c3e50;
+      direction: rtl;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .top-bar {
+      background: linear-gradient(90deg, #6c5ce7, #a29bfe);
+      color: white;
+      font-weight: 800;
+      font-size: 1.2rem;
+      text-align: center;
+      padding: 1.2rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      margin-bottom: 1.5rem;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 1rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    header h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.3rem;
+    }
+    .product-gallery {
+      display: flex;
+      overflow-x: auto;
+      gap: 1rem;
+      padding: 1rem 0;
+      max-width: 700px;
+      margin: 0 auto 2rem auto;
+      scroll-snap-type: x mandatory;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .product-gallery::-webkit-scrollbar {
+      display: none;
+    }
+    .product-card {
+      flex: 0 0 260px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      scroll-snap-align: center;
+      text-align: center;
+      padding: 1rem;
+    }
+    .product-card img {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 0.7rem;
+      transition: transform 0.3s ease;
+    }
+    .product-card:hover img {
+      transform: scale(1.05);
+    }
+    .price {
+      color: #d35400;
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+    .description {
+      max-width: 600px;
+      margin: 0 auto 2rem auto;
+      text-align: center;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #555;
+    }
+    .ad-text {
+      max-width: 600px;
+      margin: 0 auto 2rem auto;
+      text-align: center;
+      font-weight: 600;
+      font-size: 1.2rem;
+      padding: 0 1rem;
+      color: #2c3e50;
+    }
+    .buy-button {
+      display: block;
+      margin: 0 auto 2rem auto;
+      padding: 1rem 2.5rem;
+      background-color: #1abc9c;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+    .buy-button:hover {
+      background-color: #16a085;
+    }
+    footer {
+      background: white;
+      border-top: 1px solid #ddd;
+      box-shadow: 0 -2px 8px rgba(0,0,0,0.05);
+      padding: 2rem 1rem;
+      max-width: 700px;
+      margin: 0 auto 2rem auto;
+      text-align: center;
+    }
+    footer h3 {
+      margin: 0 0 0.5rem 0;
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: #2c3e50;
+    }
+    footer p {
+      margin: 0.3rem 0;
+      color: #444;
+    }
+    .payment-icons p {
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+    .payment-icons img {
+      width: 60px;
+      margin: 0 0.5rem;
+    }
+    .copyright {
+      margin-top: 1rem;
+      color: #888;
+      font-size: 0.9rem;
+    }
+
+    /* الصفحة الثانية */
+    #page2 {
+      display: none;
+      background-color: #1a1a1a;
+      color: #efff0a;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    #page2 img {
+      width: 180px;
+      margin: 5px auto 20px auto;
+      display: block;
+    }
+    #page2 form {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    #page2 input {
+      padding: 12px 70px;
+      margin: 5px 0;
+      border-radius: 10px;
+      background-color: black;
+      color: #efff0a;
+      font-weight: bold;
+      border: 1px solid gray;
+      width: 100%;
+      box-sizing: border-box;
+      text-align: center;
+    }
+    #page2 input:focus {
+      border: 1.5px solid #efff0a;
+      outline: none;
+    }
+    #page2 button {
+      padding: 8px 140px;
+      border-radius: 10px;
+      background-color: #efff0a;
+      border: none;
+      color: black;
+      font-weight: bold;
+      margin: 10px 0 20px 0;
+      cursor: pointer;
+    }
+    #page2 a {
+      color: #efff0a;
+      font-size: 0.9rem;
+      line-height: 1.3;
+      display: block;
+      max-width: 400px;
+      margin: 20px auto 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <div id="page1">
+    <div class="top-bar">الشركة المتعددة التخصصات - التوصيل إلى جميع المدن المغربية</div>
+
+    <header>
+      <h3>احصل على أقوى ملون يندمج مع السوائل الزئبقية!</h3>
+    </header>
+
+    <section class="product-gallery">
+      <div class="product-card">
+        <img src="https://res.cloudinary.com/dacennuu9/image/upload/v1752236010/UN-SUDAN3__46058_ckxvs0.jpg" alt="المنتج 1" />
+        <div class="price">2500 درهم</div>
+      </div>
+      <div class="product-card">
+        <img src="https://res.cloudinary.com/dacennuu9/image/upload/v1752235989/sudan-red-sudan-iii-dyes_yasf9k.jpg" alt="المنتج 2" />
+        <div class="price">2500 درهم</div>
+      </div>
+      <div class="product-card">
+        <img src="https://res.cloudinary.com/dacennuu9/image/upload/v1752234823/H271c6bb73ad04b2fa84fa3497c38fa10L_sbsl2n.jpg" alt="المنتج 3" />
+        <div class="price">2500 درهم</div>
+      </div>
+    </section>
+
+    <section class="description">
+      <p>منتجنا الجديد لعام 2025 هو براءة اختراع متطورة في الكيمياء الصناعية.</p>
+    </section>
+
+    <section class="ad-text">
+      🌟 اكتشف قوة الألوان الدائمة! هل تبحث عن منتج يدمج بسلاسة مع السوائل الزئبقية؟ يمنحك ألوانًا ثابتة لا تتأثر بالنار، الماء أو الكحول؟ 🔥 لا تنتظر، اطلب الآن.
+    </section>
+
+    <button id="buyNowBtn" class="buy-button">اشتري الآن</button>
+
+    <footer>
+      <h3>الشركة المتعددة التخصصات</h3>
+      <p>المغرب، الدار البيضاء، شارع الحرية</p>
+      <p>212705890009📞</p>
+      <div class="payment-icons">
+        <p>نقبل وسائل الدفع التالية:</p>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" alt="Visa" />
+      </div>
+      <p class="copyright">&copy; 2025 جميع الحقوق محفوظة.</p>
+    </footer>
+  </div>
+
+  <!-- الصفحة الثانية -->
+  <div id="page2">
+    <img src="https://res.cloudinary.com/dfeygxpwc/image/upload/v1752675665/1752675420942_ckulal.png" alt="شعار الشركة" />
+
+    <form id="myForm">  
+      <input type="text" name="الإسم الكامل" placeholder="الإسم الكامل" required><br>
+      <input type="text" name="رقم الهاتف" placeholder="رقم الهاتف" required><br>
+      <input type="text" name="العنوان والمدينة" placeholder="العنوان والمدينة" required><br>
+      <input type="text" name="الكمية من المنتج" placeholder="الكمية من المنتج" required><br>
+      <input type="text" name="لون المنتج" placeholder="لون المنتج" required><br><br>
+      <button type="submit"><b>Envoyer</b></button>
+    </form>
+
+    <a href="#">
+       <a href="#">
+    Nous n'offrons pas seulement un produit, nous offrons une expérience pratique et sûre à partir du moment où vous commandez jusqu'à ce que vous le receviez. Nous garantissons une qualité élevée، une livraison rapide et une assistance continue en cas de besoin. Rejoignez des centaines de clients satisfaits et commandez en toute confiance.
+    <br>
+    Tous droits réservés © 2025
+  </a>
+</div>
+      <br><br>
+      Tous droits réservés © 2025
+    </a>
+  </div>
+
+  <script>
+    const buyBtn = document.getElementById('buyNowBtn');
+    const page1 = document.getElementById('page1');
+    const page2 = document.getElementById('page2');
+
+    buyBtn.addEventListener('click', () => {
+      page1.style.display = 'none';
+      page2.style.display = 'block';
+    });
+
+    const scriptURL = "https://script.google.com/macros/s/AKfycbyL48AYT_ShyhiyvPaNZjce7RsXHbMeA9YHAeSKVJu7Y5_3m2S9p5HRFAdup45kqzvV/exec";
+
+    document.getElementById("myForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const formData = new FormData(this);
+
+      fetch(scriptURL, {
+        method: "POST",
+        body: formData
+      })
+      .then(response => {
+        if (response.ok) {
+          alert("✅ تم تسجيل طلبك بنجاح. سنتواصل معك قريبًا. شكرا لاستخدامك متجرنا.");
+          this.reset();
+        } else {
+          alert("❌ حدث خطأ أثناء الإرسال");
+        }
+      })
+      .catch(error => {
+        alert("❌ فشل الاتصال بالسيرفر");
+        console.error(error);
+      });
+    });
+  </script>
+</body>
+</html>
